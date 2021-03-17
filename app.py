@@ -3,7 +3,6 @@ from flask import jsonify
 from google.cloud import storage
 from google.oauth2 import service_account
 from PIL import Image
-#import Image
 import os
 import mimetypes
 
@@ -327,7 +326,10 @@ def _get_bucket():
     client = storage.Client(project=GOOGLE_STORAGE_PROJECT, credentials=credentials)
     return client.get_bucket(GOOGLE_STORAGE_BUCKET)
 
-
+@app.route("/")
+def home():
+    return render_template('index.html')
+	
 ########################################################################
 # Main flow of execution
 ########################################################################
